@@ -1,0 +1,15 @@
+{
+  "option":{
+    "user": {
+      "account": "lulu5",
+      "password": "413129"
+    },
+    "items": [
+      {"sku": "0TE9010000", "qty": 6},
+      {"sku": "PHYR210000", "qty": 1},
+      {"sku": "G059010000", "qty": 1},
+      {"sku": "PF4801L000", "qty": 1},
+      {"sku": "PHYL130000", "qty": 1}
+    ]
+  }
+}
