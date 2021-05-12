@@ -1,8 +1,7 @@
 from selenium import webdriver
 import time
 # http://chromedriver.chromium.org/
-item_list = [('0TE9010000', 6), ('PHYR210000', 1), ('G059010000', 1), ('PF4801L000', 1), ('PHYL130000', 1), ('0KWP010000', 2),
-             ('G08P010000', 1), ('81WR500000', 1), ('SJ92010000', 1), ('KKG3Y90000', 2), ('SH52Y9L000', 2)]
+item_list = [('ZHG5630000', 6), ('LSFY210002', 1)]
 
 
 def launch():
@@ -12,8 +11,8 @@ def launch():
 
 
 def login(browser):
-    browser.find_element_by_id('txtUserID').send_keys('lulu5')
-    browser.find_element_by_id('txtPwd').send_keys('413129')
+    browser.find_element_by_id('txtUserID').send_keys('elcfin129')
+    browser.find_element_by_id('txtPwd').send_keys('571262')
     check_code = input('输入验证码:')
     browser.find_element_by_id('txtVerify').send_keys(check_code)
     browser.find_element_by_id('btnSignIn').click()
@@ -34,15 +33,14 @@ def try_to_buy(browser):
             alert_text = ''
             # 获取库存
             qty = browser.find_element_by_xpath(f'//*[@id="{sku}"]/table/tbody/tr[2]/td[1]').text
-            print(qty)
+            print(f"{sku}数量:{qty}")
             qty = int(qty)
             if qty > 0:
                 order_count = browser.find_element_by_xpath(f'//*[@id="{sku}"]/table/tbody/tr[2]/td[2]/input')
                 order_count.clear()
                 if want_qty > qty:
-                    order_count.send_keys(qty)
-                else:
-                    order_count.send_keys(want_qty)
+                    want_qty = qty
+                order_count.send_keys(want_qty)
                 # 点击 加入购物车
                 browser.find_element_by_xpath(f'//*[@id="{sku}"]/table/tbody/tr[3]/td/input').click()
                 for i in range(5):
